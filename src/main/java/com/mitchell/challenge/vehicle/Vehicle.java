@@ -6,10 +6,10 @@ import javax.persistence.*;
 public class Vehicle {
     @Id
     @Column(unique = true, nullable = false)
-    private int id;
+    private Integer id;
 
     @Column(nullable = false)
-    private int year;
+    private Integer year;
 
     @Column(nullable = false)
     private String make;
@@ -19,18 +19,18 @@ public class Vehicle {
 
     public Vehicle() {}
 
-    public Vehicle(int id, int year, String make, String model) {
+    public Vehicle(Integer id, Integer year, String make, String model) {
         this.id = id;
         this.year = year;
         this.make = make;
         this.model = model;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 

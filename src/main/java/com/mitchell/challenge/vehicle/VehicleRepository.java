@@ -28,7 +28,7 @@ public class VehicleRepository {
         return jdbcTemplate.query(sql, mapVehicleFromDB());
     }
 
-    Vehicle getVehicleById(int id) {
+    Vehicle getVehicleById(Integer id) {
         String sql = "" +
                 "SELECT " +
                 "* " +
@@ -47,15 +47,7 @@ public class VehicleRepository {
         return jdbcTemplate.update(sql, vehicle.getId(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel());
     }
 
-    int updateVehicleId(int id, int changedId) {
-        String sql = "" +
-                "UPDATE vehicle " +
-                "SET id = ? " +
-                "WHERE id = ?";
-        return jdbcTemplate.update(sql, changedId, id);
-    }
-
-    int updateVehicleYear(int id, int year) {
+    int updateVehicleYear(Integer id, Integer year) {
         String sql = "" +
                 "UPDATE vehicle " +
                 "SET vehicle = ? " +
@@ -63,7 +55,7 @@ public class VehicleRepository {
         return jdbcTemplate.update(sql, year, id);
     }
 
-    int updateVehicleMake(int id, String make) {
+    int updateVehicleMake(Integer id, String make) {
         String sql = "" +
                 "UPDATE vehicle " +
                 "SET make = ? " +
@@ -71,7 +63,7 @@ public class VehicleRepository {
         return jdbcTemplate.update(sql, make, id);
     }
 
-    int updateVehicleModel(int id, String model) {
+    int updateVehicleModel(Integer id, String model) {
         String sql = "" +
                 "UPDATE vehicle " +
                 "SET model = ? " +
@@ -94,7 +86,7 @@ public class VehicleRepository {
         );
     }
 
-    int deleteVehicle(int id) {
+    int deleteVehicle(Integer id) {
         String sql = "" +
                 "DELETE FROM vehicle " +
                 "WHERE id = ?";
