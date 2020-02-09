@@ -40,6 +40,7 @@ public class VehicleRepository {
     int createVehicle(Vehicle vehicle) {
         String sql = "" +
                 "INSERT INTO vehicle (" +
+                "id, " +
                 "year, " +
                 "make, " +
                 "model) " +
