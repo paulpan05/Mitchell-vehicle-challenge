@@ -16,7 +16,8 @@ public class VehicleService {
     private final String nonExistGetString = "Cannot get non-existent vehicle";
     private final String nonExistDeleteString = "Cannot delete non-existent vehicle";
     private final String vehicleYearInvalidString = "Vehicle year must be between 1950 and 2050";
-    private final String missingValuesRequestString = "Cannot create vehicle with missing values in request body";
+    private final String missingValuesRequestString = "Request body invalid, must be in the form" +
+            "{id: int, year: int, make: string, model: string}";
     private final String noIdRequestString = "Cannot change vehicle properties without ID";
 
     @Autowired
