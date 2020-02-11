@@ -183,7 +183,7 @@ public class VehicleApplicationTests {
 	}
 
 	@Test
-	@Order(10)
+	@Order(11)
 	public void expectUpdateVehicleNoId() throws Exception {
 		Vehicle updatedVehicle = new Vehicle(null, 2012, "Tesla", "S");
 		mockMvc.perform(
@@ -196,7 +196,7 @@ public class VehicleApplicationTests {
 	}
 
 	@Test
-	@Order(10)
+	@Order(12)
 	public void expectUpdateVehicleSuccess() throws Exception {
 		Vehicle updatedVehicle = new Vehicle(2, 2012, "Tesla", "S");
 		mockMvc.perform(
