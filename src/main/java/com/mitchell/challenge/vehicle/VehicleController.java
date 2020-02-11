@@ -16,7 +16,7 @@ public class VehicleController {
     }
 
     @GetMapping
-    public List<Vehicle> getAllVehicles(
+    public List<Vehicle> getVehicles(
             @RequestParam(required = false) Integer year,
             @RequestParam(required = false) String make,
             @RequestParam(required = false) String model) {
