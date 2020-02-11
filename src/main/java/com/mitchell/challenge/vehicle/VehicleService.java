@@ -83,11 +83,10 @@ public class VehicleService {
     }
 
     void deleteVehicle(Integer id) {
-        try {
-            vehicleRepository.deleteVehicle(id);
-        } catch (DataAccessException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, nonExistDeleteString);
-        }
+            int successStatus = vehicleRepository.deleteVehicle(id);
+            if (successStatus == 0) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, nonExistDeleteString);
+            }
     }
 
 }
