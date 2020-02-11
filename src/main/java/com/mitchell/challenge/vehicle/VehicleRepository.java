@@ -51,7 +51,7 @@ public class VehicleRepository {
     int updateVehicleYear(Integer id, Integer year) {
         String sql = "" +
                 "UPDATE vehicle " +
-                "SET vehicle = ? " +
+                "SET year = ? " +
                 "WHERE id = ?";
         return jdbcTemplate.update(sql, year, id);
     }

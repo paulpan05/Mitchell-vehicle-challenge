@@ -195,4 +195,16 @@ public class VehicleApplicationTests {
 				.andExpect(status().reason("Cannot change vehicle properties without ID"));
 	}
 
+	@Test
+	@Order(10)
+	public void expectUpdateVehicleSuccess() throws Exception {
+		Vehicle updatedVehicle = new Vehicle(2, 2012, "Tesla", "S");
+		mockMvc.perform(
+				put("/vehicles")
+						.content(objectMapper.writeValueAsString(updatedVehicle))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
+
 }
