@@ -37,6 +37,33 @@ public class VehicleRepository {
         return jdbcTemplate.queryForObject(sql, new Object[]{id}, mapVehicleFromDB());
     }
 
+    List<Vehicle> getVehiclesByYear(Integer year) {
+        String sql = "" +
+                "SELECT " +
+                "* " +
+                "FROM vehicle " +
+                "WHERE year=?";
+        return jdbcTemplate.query(sql, new Object[]{year}, mapVehicleFromDB());
+    }
+
+    List<Vehicle> getVehiclesByMake(String make) {
+        String sql = "" +
+                "SELECT " +
+                "* " +
+                "FROM vehicle " +
+                "WHERE make=?";
+        return jdbcTemplate.query(sql, new Object[]{make}, mapVehicleFromDB());
+    }
+
+    List<Vehicle> getVehiclesByModel(String model) {
+        String sql = "" +
+                "SELECT " +
+                "* " +
+                "FROM vehicle " +
+                "WHERE model=?";
+        return jdbcTemplate.query(sql, new Object[]{model}, mapVehicleFromDB());
+    }
+
     int createVehicle(Vehicle vehicle) {
         String sql = "" +
                 "INSERT INTO vehicle (" +

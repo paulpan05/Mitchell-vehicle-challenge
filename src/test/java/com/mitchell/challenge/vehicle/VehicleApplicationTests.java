@@ -207,4 +207,67 @@ public class VehicleApplicationTests {
 				.andExpect(status().isOk());
 	}
 
+	@Test
+	@Order(13)
+	public void expectGetVehiclesByYear() throws Exception {
+		Vehicle originalVehicle = new Vehicle(2, 2012, "Tesla", "S");
+		Vehicle vehicle_1 = new Vehicle(1, 2012, "Toyota", "S");
+		Vehicle vehicle_2 = new Vehicle(3, 2015, "Toyota", "S");
+		mockMvc.perform(
+				post("/vehicles")
+						.content(objectMapper.writeValueAsString(vehicle_1))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON));
+		mockMvc.perform(
+				post("/vehicles")
+						.content(objectMapper.writeValueAsString(vehicle_2))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON));
+		mockMvc.perform(get("/vehicles?year=2012"))
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("[" +
+						objectMapper.writeValueAsString(vehicle_1) + "," +
+						objectMapper.writeValueAsString(originalVehicle) + "]")));
+	}
+
+	@Test
+	@Order(14)
+	public void expectGetVehicleByMake() throws Exception {
+		Vehicle vehicle_1 = new Vehicle(1, 2012, "Toyota", "S");
+		Vehicle vehicle_2 = new Vehicle(3, 2015, "Toyota", "S");
+		mockMvc.perform(get("/vehicles?make=Toyota"))
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("[" +
+						objectMapper.writeValueAsString(vehicle_1) + "," +
+						objectMapper.writeValueAsString(vehicle_2) + "]")));
+	}
+
+	@Test
+	@Order(15)
+	public void expectGetVehicleByModel() throws Exception {
+		Vehicle vehicle_1 = new Vehicle(1, 2012, "Toyota", "S");
+		Vehicle vehicle_2 = new Vehicle(2, 2012, "Tesla", "S");
+		Vehicle vehicle_3 = new Vehicle(3, 2015, "Toyota", "S");
+		mockMvc.perform(get("/vehicles?model=S"))
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("[" +
+						objectMapper.writeValueAsString(vehicle_1) + "," +
+						objectMapper.writeValueAsString(vehicle_2) + "," +
+						objectMapper.writeValueAsString(vehicle_3) + "]")));
+	}
+
+	@Test
+	@Order(16)
+	public void expectGetVehicleByYearMakeModel() throws Exception {
+		Vehicle vehicle_1 = new Vehicle(1, 2012, "Toyota", "S");
+		Vehicle vehicle_2 = new Vehicle(2, 2012, "Tesla", "S");
+		Vehicle vehicle_3 = new Vehicle(3, 2015, "Toyota", "S");
+		mockMvc.perform(get("/vehicles?year=2012&make=Tesla&model=S"))
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("[" +
+						objectMapper.writeValueAsString(vehicle_1) + "," +
+						objectMapper.writeValueAsString(vehicle_2) + "," +
+						objectMapper.writeValueAsString(vehicle_3) + "]")));
+	}
+
 }

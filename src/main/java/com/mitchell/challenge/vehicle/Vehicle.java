@@ -41,4 +41,13 @@ public class Vehicle {
     public String getModel() {
         return model;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Vehicle vehicleObj = (Vehicle) obj;
+        return vehicleObj.getId().equals(id) &&
+                vehicleObj.getYear().equals(year) &&
+                vehicleObj.getMake().equals(make) &&
+                vehicleObj.getModel().equals(model);
+    }
 }

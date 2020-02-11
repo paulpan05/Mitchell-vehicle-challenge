@@ -16,8 +16,11 @@ public class VehicleController {
     }
 
     @GetMapping
-    public List<Vehicle> getAllVehicles() {
-        return vehicleService.getAllVehicles();
+    public List<Vehicle> getAllVehicles(
+            @RequestParam(required = false) Integer year,
+            @RequestParam(required = false) String make,
+            @RequestParam(required = false) String model) {
+        return vehicleService.getVehicles(year, make, model);
     }
 
     @GetMapping("{id}")
