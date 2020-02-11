@@ -1,11 +1,10 @@
 package com.mitchell.challenge.vehicle;
 
-import com.mitchell.challenge.vehicle.exceptions.IdTakenException;
-import com.mitchell.challenge.vehicle.exceptions.InvalidRequestException;
-import com.mitchell.challenge.vehicle.exceptions.VehicleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +18,7 @@ public class VehicleService {
     private final String missingValuesRequestString = "Request body invalid, must be in the form" +
             "{id: int, year: int, make: string, model: string}";
     private final String noIdRequestString = "Cannot change vehicle properties without ID";
+    private final String idTakenString = "ID of vehicle already exists in database";
 
     @Autowired
     public VehicleService(VehicleRepository vehicleRepository) {
@@ -37,7 +37,7 @@ public class VehicleService {
         try {
             return vehicleRepository.getVehicleById(id);
         } catch (DataAccessException e) {
-            throw new VehicleNotFoundException(nonExistGetString);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, nonExistGetString);
         }
     }
 
@@ -50,14 +50,14 @@ public class VehicleService {
                 vehicleYear == null ||
                 vehicleMake == null ||
                 vehicleModel == null) {
-            throw new InvalidRequestException(missingValuesRequestString);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, missingValuesRequestString);
         } else if (!vehicleRepository.isIdTaken(vehicle.getId())) {
             if (!isValidYear(vehicleYear)) {
-                throw new InvalidRequestException(vehicleYearInvalidString);
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, vehicleYearInvalidString);
             }
             vehicleRepository.createVehicle(vehicle);
         } else {
-            throw new IdTakenException();
+            throw new ResponseStatusException(HttpStatus.CONFLICT, idTakenString);
         }
     }
 
@@ -67,12 +67,12 @@ public class VehicleService {
         String vehicleMake = vehicle.getMake();
         String vehicleModel = vehicle.getModel();
         if (vehicleId == null) {
-            throw new InvalidRequestException(noIdRequestString);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, noIdRequestString);
         }
         Optional.ofNullable(vehicleYear)
                 .ifPresent(year -> {
                     if (!isValidYear(year)) {
-                        throw new InvalidRequestException(vehicleYearInvalidString);
+                        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, vehicleYearInvalidString);
                     }
                     vehicleRepository.updateVehicleYear(vehicleId, vehicleYear);
                 });
@@ -86,7 +86,7 @@ public class VehicleService {
         try {
             vehicleRepository.deleteVehicle(id);
         } catch (DataAccessException e) {
-            throw new VehicleNotFoundException(nonExistDeleteString);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, nonExistDeleteString);
         }
     }
 
