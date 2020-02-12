@@ -1,5 +1,7 @@
 # Mitchell International Software Development Engineering Internship Coding Challenge
 
+Developed by: Junhong Pan (Paul)
+
 Vehicle back-end for Mitchell coding challenge, implemented with Java Spring MVC and hosted on Heroku.
 
 ## Project Structure
