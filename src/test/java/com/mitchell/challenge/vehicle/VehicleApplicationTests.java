@@ -268,7 +268,7 @@ public class VehicleApplicationTests {
 						.content(objectMapper.writeValueAsString(updatedVehicle))
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isBadRequest())
+				.andExpect(status().isNotFound())
 				.andExpect(status().reason("ID of vehicle does not exist in the database"));
 	}
 
