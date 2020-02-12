@@ -3,6 +3,6 @@ deploy:
   provider: heroku
   app: mitchell-vehicle-challenge
   on:
-    repo: paulpan05/paul-url-backend
+    repo: paulpan05/Mitchell-vehicle-challenge
   api_key:
     secure: I0kv9yDDC1rGVr2PVtsTrIAsPmiwmvCdSip8Q310aKIS07Bx1akgPqC/6x5C4ysckdItd76hnbgEEDsVWN2fxyG3KxqS9w5pwKcymSilXDjrtDaSflyGIgCmHmdLHcKlkpzT8bRvxsczRzmBe79Maqf2mptfk2Un9QNOF6HEWcO+OcrRlDGreEqbQnGIHz/sI1f8RaHaPSqqhOPkE86v2hzpSYO2TYtx834r4EPy/bFXE0YgpjKDxEPpeMsIf/4K+hTC0qoZxLHg1DY+1XIl9W4/tD7d8aJQ59g6A/ofVh2kRxPWET0vMfGAjRyvPq//THG+vblwc5W0CVZ4XdUhsx+L6S/CLKpYC+glhb2RBLucU5QD+Sci1pHrkpjLLYMLB1M1YnC7RA8yHsDwCJc8XI+KwOpMHOp06OlZhrxDWqUlRjzYRkacbz4VWrdydHYDxN3B7CcaxokrbGhz4c5q48sj47lWEsWtF05X03LTd6aLSNI4tDV/BsjPMN5p08x7o80vzFa9dtUGq8P7Qg0STuHDJ3L6p9LGWnzDiuWcInzrSjQf+tQ70/pX+pBoHo9AfwRTphFmY+gIGQMmcXg5h0+n+4NixqRtatvJGJGE75cucpUfeGAuPD9zDvVQt4ss0nJyqcXRtHQ2sN/S7LSV/hNmF3kZflpZYbhVMhk4KV4=

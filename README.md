@@ -2,6 +2,23 @@
 
 Vehicle back-end for Mitchell coding challenge, implemented with Java Spring MVC and hosted on Heroku.
 
+## Project Structure
+ - src
+    - main
+        - java/com.mitchell.challenge.vehicle
+            - Vehicle.java: the vehicle model class file which database table is build from.
+            - VehicleApplication.java: The file which the web service is run off of.
+            - VehicleController.java: The controller class defining REST endpoints.
+            - VehicleRepository.java: The data access class defining calls to H2 database.
+            - VehicleService.java: The service class which handles errors for requests and calls repository for data.
+        - resources/application.properties: Datasource configuration for H2 runtime in-memory database.
+    - test
+        - java/com.mitchell.challenge.vehicle
+            - VehicleApplicationTests.java: The file for all unit tests of the application.
+        - resources/application.properties: Datasource configuration for H2 runtime in-memory database in test
+        environment.
+
+
 ## Requested Features
 These required features are implemented:
  - [x] Usage of either C# or Java.
@@ -39,7 +56,7 @@ The list of valid routes are:
     
 ## Deployment
 
-Deployment is automated with TravisCI to Heroku. To reference the build status, click the build icon above.
+Deployment is automated with TravisCI to Heroku.
 
 ## Testing
 
