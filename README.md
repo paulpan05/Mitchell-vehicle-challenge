@@ -2,6 +2,22 @@
 
 Vehicle back-end for Mitchell coding challenge, implemented with Java Spring MVC and hosted on Heroku.
 
+## Requested Features
+These required features are implemented:
+ - [x] Usage of either C# or Java.
+ - [x] Some form of automated testing.
+ - [x] Some form of in-memory persistence of created vehicle objects.
+
+Additionally, there are optional features which are implemented:
+ - [x] Add validation to your service.
+    - [x] Vehicles must have a non-null / non-empty make and model specified, and the year must be between
+      1950 and 2050.
+ - [x] Add filtering to your service.
+    - [x] The GET vehicles route should support filtering vehicles based on one or more vehicle properties. (EX:
+          retrieving all vehicles where the ‘Make’ is ‘Toyota’)
+ - [ ] Write an example client for your service. (Did not have enough time for this one and decided to improve upon
+ backend implementation)
+
 ## Implementation
 
 The application is implemented with Spring MVC Java Framework. A driver is embedded in the program which summons the H2
