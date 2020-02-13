@@ -58,7 +58,7 @@ The list of valid routes are:
     
 ## Deployment
 
-Deployment is automated with TravisCI to Heroku.
+Deployment is automated with TravisCI to Heroku. For TravisCI deployment status, check the badge on the top of README
 
 ## Testing
 
